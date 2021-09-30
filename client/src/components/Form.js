@@ -1,27 +1,48 @@
 import styled from "styled-components";
 
-export default function Form(){
-	
+export default function Form({onCreateQuestion}){
 	
 	return (
-		<StyledForm>
-			<StyledLabel for="question__input">
+		<StyledForm onSubmit={(event) => handleSubmit(event)}>
+			<StyledLabel htmlFor="question__input">
 				Your Question:
 			</StyledLabel>
-			<StyledInput id="question__input"placeholder="Type in your Question here.">
+			<StyledInput 
+				type="text"
+				name="question__input"
+				placeholder="Type in your Question here." 
+				required
+          		autoComplete="Off">
 				</StyledInput>
 			<StyledButton>
 				Save
 			</StyledButton>
 		</StyledForm>
 	)
+
+	function handleSubmit(eventInside) {
+		eventInside.preventDefault();
+		const form = eventInside.target;
+		const textInput = form.elements.question__input;
+
+		onCreateQuestion({
+			text: textInput.value,
+			author: "anonymous"
+		})
+
+		form.reset();
+	}
+
 }
 
 const StyledForm = styled.form`
+	background-color: white;
 	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	width: calc(100% - 40px);
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px;
+	border-top: 0.5px solid black;
 `
 
 const StyledLabel = styled.label`
