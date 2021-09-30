@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Main from './components/Main'
 
-function App() {
+const INITIAL_DATA = [
+  {
+    text: 'What is node.js?',
+    author: 'Max Mustermann',
+  },
+  {
+    text: 'How does routing work?',
+    author: 'Tina',
+  },
+  {
+    text: 'How to use mongo?',
+    author: 'Ron Weasley',
+  },
+  {
+    text: 'What is a server?',
+    author: 'Max Muster',
+  },
+]
+
+export default function App() {
+  const [data, setData] = useState(INITIAL_DATA)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Main data={data} />
+    </>
+  )
 }
-
-export default App;
