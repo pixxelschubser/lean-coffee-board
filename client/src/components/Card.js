@@ -18,6 +18,9 @@ const StyledArticle = styled.article`
   border-radius: 20px;
   border: 1px solid black;
   display: block;
+  &:last-of-type {
+    margin-bottom: 86px;
+  }
 
   @media only screen and (min-width: 880px) {
     display: inline-block;
