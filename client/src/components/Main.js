@@ -60,8 +60,8 @@ export default function Main() {
         author: author,
       },
     ]
-    localStorage.setItem('localQuestions', JSON.stringify(data))
-    setData(newData)
+	setData(newData)
+    localStorage.setItem('localQuestions', JSON.stringify(newData))
   }
 }
 
