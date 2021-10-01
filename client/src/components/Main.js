@@ -26,8 +26,17 @@ const INITIAL_DATA = [
   },
 ]
 
+if (localStorage.getItem('localQuestions')===null){
+	localStorage.setItem('localQuestions', JSON.stringify(INITIAL_DATA))
+}
+ 
+let localData = JSON.parse(localStorage.getItem('localQuestions'))
+
+
+
+
 export default function Main(){
-	const [data, setData] = useState(INITIAL_DATA)
+	const [data, setData] = useState(localData)
 
 	return (
 	<StyledMain>
