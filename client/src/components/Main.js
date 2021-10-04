@@ -40,7 +40,7 @@ export default function Main() {
     <StyledMain>
       {data.map(question => (
         <Card
-          key={question.key}
+          id={question.key}
           text={question.text}
           author={question.author}
         />
