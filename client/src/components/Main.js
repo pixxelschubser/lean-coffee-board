@@ -7,7 +7,7 @@ export default function Main({cards}) {return (
     <StyledMain>
       {cards.map(question => (
         <Card
-          key={question.key}
+          key={question._id}
           text={question.text}
           author={question.author}
         />
