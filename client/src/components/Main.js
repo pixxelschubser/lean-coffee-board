@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import Card from './Card'
 import Form from './Form'
-import { nanoid } from 'nanoid'
+// import { nanoid } from 'nanoid'
 
 export default function Main({cards}) {return (
     <StyledMain>
@@ -12,12 +12,12 @@ export default function Main({cards}) {return (
           author={question.author}
         />
       ))}
-      <Form onCreateQuestion={createQuestionHandler} />
+      <Form cards={cards}/>
     </StyledMain>
   )
 
-  function createQuestionHandler({ text, author }) {
-    let key = nanoid()
+  // function createQuestionHandler({ text, author }) {
+  //   let key = nanoid()
 
   //   const newData = [
   //     ...data,
@@ -29,7 +29,7 @@ export default function Main({cards}) {return (
   //   ]
 	// setData(newData)
   //   localStorage.setItem('localQuestions', JSON.stringify(newData))
-  }
+  // }
 }
 
 const StyledMain = styled.main`

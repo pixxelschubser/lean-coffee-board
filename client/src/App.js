@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
-import Main from './components/Main'
+import styled from 'styled-components/macro'
+import Card from './components/Card'
+import Form from './components/Form'
+
 import getCards from './services/getCards'
+import postCard from './services/createCard'
 
 export default function App() {
 
@@ -13,7 +17,30 @@ export default function App() {
       .catch(error => console.log(error))
   }, [])
 
+  function createCard(card){
+    postCard(card)
+    .then(response => response.json())
+    .then(data => setCards([...cards, data]))
+    .catch(error => console.error(error))
+  }
+
   return ( 
-    <Main cards={cards}/>
+      <StyledMain>
+        {cards.map(question => (
+        <Card
+          key={question._id}
+          text={question.text}
+          author={question.author}
+        />
+      ))}
+      <Form onCreateQuestion={createCard}/>
+    </StyledMain>
   )
 }
+
+const StyledMain = styled.main`
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  white-space: wrap;
+`

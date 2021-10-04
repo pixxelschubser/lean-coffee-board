@@ -1,7 +1,6 @@
 import styled from "styled-components/macro";
 
 export default function Form({onCreateQuestion}){
-	
 	return (
 		<StyledForm onSubmit={(event) => handleSubmit(event)}>
 			<StyledLabel htmlFor="question__input">
@@ -9,6 +8,7 @@ export default function Form({onCreateQuestion}){
 			</StyledLabel>
 			<StyledInput 
 				type="text"
+				id="question__input"
 				name="question__input"
 				placeholder="Type in your Question here." 
 				required
@@ -20,15 +20,16 @@ export default function Form({onCreateQuestion}){
 		</StyledForm>
 	)
 
-	function handleSubmit(eventInside) {
-		eventInside.preventDefault();
-		const form = eventInside.target;
-		const textInput = form.elements.question__input;
-
-		onCreateQuestion({
-			text: textInput.value,
-			author: "anonymous"
-		})
+	function handleSubmit(event) {
+		event.preventDefault();
+		const form = event.target;
+		const textInput = form.elements.question__input.value;
+		const newCard = {
+			text: textInput,
+			author: "anonymous author"
+		}
+		
+		onCreateQuestion(newCard)
 
 		form.reset();
 	}
