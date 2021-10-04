@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Main from './components/Main'
+import getCards from './services/getCards'
 
 export default function App() {
 
@@ -7,12 +8,11 @@ export default function App() {
 
   useEffect(() => {
     // GET http://localhost:4000/api/cards
-    fetch('/api/cards')
-      .then(response => response.json())
+    getCards()
       .then(data => setCards(data))
       .catch(error => console.log(error))
   }, [])
-  
+
   return ( 
     <Main cards={cards}/>
   )
